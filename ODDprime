@@ -1,0 +1,85 @@
+/**
+ * This is an implentation of ODD(OneDigitDifference)Number program forexample
+ *Take this number 345456. Each pair of consecutive digits of 345456 has a difference of on.
+ *these numbers are called one-digit-difference numbers. Or ODD numbers.
+ *Print all the ODD numbers count and also print all the ODD prime numbers count.
+ */
+//initialization of min and max numbers
+
+let min=0
+let max=10000000
+let count=0
+/**
+ * This is a differnce function to check the difference between the digits of a number.
+ * @param {Number} i giving a number to check that number is ODD or not.
+ * @returns boolean if the difference between each digit of a number is 1
+ * then it returns true to the calling function.
+ */
+function difference(n)
+{
+    if(n<10)
+    {
+        return false
+    }
+
+    let string = n.toString()
+    for (let j=0; j< string.length-1;j++){
+        if (Math.abs(Number(string[j]) - Number(string[j+1])) != 1){
+            return false
+        }
+
+    }
+    return false
+}
+/**
+ * This is helper function to check prime numbers
+ *@param {Number} to check the given number is prime.
+ *@returns {boolean} if the number is prime then it returns true
+ *else it returns false.
+ */
+function isprime(n1){
+    if (n1<=1)
+      return false;
+ //check from 2 to n-1
+ for (let i = 2; i < n1; i++) 
+    if (n1 % i == 0) 
+         return false; 
+return true;
+}
+/**
+ *This is a helper function to check each and every number between 0 and 
+ * 10 million and print the ODD numbers.
+ */
+ function test(){
+    for (let i = min; i < max; i++) {
+            if (difference(i) == true){
+            Oddlist.push(i);
+            count++
+            }
+        }
+        console.log("odd total numbers :", count);
+    }
+  /**
+ * This is hepler function to print the ODD prime numbers.
+ */
+let oddlist = [];//Empty list/array is created.
+function testprime(){
+    let countprime = 0; 
+    for (let i = 0; i < oddlist.length; i++) {
+        if (isprime(oddlist[i])) {
+            countprime++;
+        }
+    }
+    console.log("prime numbers in ODD list:", countprime);
+} 
+
+/**
+ * This main function to call the helping functions
+ */
+function main(){
+    test()
+    testprime()
+}
+main()  
+
+
